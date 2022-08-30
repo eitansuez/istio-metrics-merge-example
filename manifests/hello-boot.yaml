@@ -30,14 +30,14 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
-        prometheus.io/path: "/actuator/metrics"
+        prometheus.io/path: "/actuator/prometheus"
       labels:
         app: helloboot
         version: v1
     spec:
       containers:
       - name: helloboot
-        image: test-metrics:0.0.1-SNAPSHOT
+        image: my-cluster-registry:5000/test-metrics:0.0.2
         resources:
           requests:
             cpu: "100m"
