@@ -38,17 +38,10 @@ The istio-agent will use that information to locate the application's scrape end
 
 ## Building the app
 
-1. Produce a local image named `test-metrics:<version>` (the version is specified in the gradle build file)
+1. Produce a local image named `test-metrics:<version>` (the version is specified in the gradle build file), tag it and push it to a local registry (assumption: using a local k8s cluster configured with a local registry exposed to k8s on port 5000 and exposed on localhost on `<port>`, see [how to do this with k3d](https://k3d.io/v5.4.6/usage/registries/#create-a-dedicated-registry-together-with-your-cluster)).
 
     ```
-    gradle bootBuildImage
-    ```
-
-1. Tag & push the image (assumption: using a local k8s cluster configured with a local registry exposed to k8s on port 5000 and exposed on localhost on `<port>`, see [how to do this with k3d](https://k3d.io/v5.4.6/usage/registries/#create-a-dedicated-registry-together-with-your-cluster)).
-
-    ```
-    docker tag test-metrics:<version> localhost:<port>/test-metrics:<version>
-    docker push localhost:<port>/test-metrics:<version>
+    gradle bootBuildImage --imageName=localhost:<port>/test-metrics:<version> --publishImage
     ```
 
 ## To test this
