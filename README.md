@@ -44,7 +44,7 @@ The istio-agent will use that information to locate the application's scrape end
     gradle bootBuildImage
     ```
 
-1. Tag & push the image (assumption: using a local k8s cluster configured with a local registry exposed to k8s on port 5000 and exposed on localhost on <port>, see [how to do this with k3d](https://k3d.io/v5.4.6/usage/registries/#create-a-dedicated-registry-together-with-your-cluster)).
+1. Tag & push the image (assumption: using a local k8s cluster configured with a local registry exposed to k8s on port 5000 and exposed on localhost on `<port>`, see [how to do this with k3d](https://k3d.io/v5.4.6/usage/registries/#create-a-dedicated-registry-together-with-your-cluster)).
 
     ```
     docker tag test-metrics:<version> localhost:<port>/test-metrics:<version>
